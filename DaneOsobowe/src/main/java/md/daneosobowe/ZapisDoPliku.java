@@ -5,10 +5,25 @@
  */
 package md.daneosobowe;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.io.FileWriter;
+
 /**
  *
  * @author Michał
  */
 public class ZapisDoPliku {
-    
+    public void saveToFile(ArrayList<Dane> list) throws IOException{
+        File f = new File("Dane.csv");
+        
+        FileWriter fw = new FileWriter(f);
+        for (int i=0; i<list.size(); i++){
+            Dane dane = list.get(i);
+            fw.write(dane.toString()+"\n");
+        }
+        
+        fw.close();
+    }
 }

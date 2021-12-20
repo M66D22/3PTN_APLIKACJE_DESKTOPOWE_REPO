@@ -5,7 +5,11 @@
  */
 package md.daneosobowe;
 
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -16,12 +20,14 @@ public class MainWindow extends javax.swing.JFrame {
 
     ArrayList<Dane> list = new ArrayList<Dane>();
     DefaultListModel dlm = new DefaultListModel();
+    ZapisDoPliku zdp = new ZapisDoPliku();
     
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
+        initPopUpMenu();
     }
 
     /**
@@ -33,10 +39,15 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItemDelete = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jButtonDodajDane = new javax.swing.JButton();
+
+        jMenuItemDelete.setText("jMenuItem1");
+        jPopupMenu1.add(jMenuItemDelete);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +78,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonDodajDane)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -87,9 +98,34 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonDodajDaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDodajDaneActionPerformed
-        
+       DodawanieDanych dodawanieDanych = new DodawanieDanych(this, rootPaneCheckingEnabled);
+       dodawanieDanych.setVisible(true);
+       list.add(dodawanieDanych.getDane());
+       dlm.addElement(dodawanieDanych.getDane());
+       jList1.setModel(dlm);
+        try {
+            zdp.saveToFile(list);
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       dodawanieDanych = null;
     }//GEN-LAST:event_jButtonDodajDaneActionPerformed
 
+    private void showPopupMenu(MouseEvent e){
+        jPopupMenu1.show(this, e.getX(), e.getY());
+    }
+    
+    private void formMousePressed(MouseEvent evt){
+        if (evt.isPopupTrigger()){
+            showPopupMenu(evt);
+        }
+    }
+    
+    private void initPopUpMenu(){
+        jMenuItemDelete.setText("Delete");
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -125,7 +161,9 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDodajDane;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JMenuItem jMenuItemDelete;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

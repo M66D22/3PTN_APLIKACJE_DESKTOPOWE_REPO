@@ -11,6 +11,8 @@ package md.daneosobowe;
  */
 public class DodawanieDanych extends javax.swing.JDialog {
 
+    String imie, nazwisko, klasa, rokRozpoczeciaNauki;
+    
     /**
      * Creates new form DodawanieDanych
      */
@@ -28,22 +30,124 @@ public class DodawanieDanych extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabelImie = new javax.swing.JLabel();
+        jTextFieldImie = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldNazwisko = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldKlasa = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldRokRozpoczeciaNauki = new javax.swing.JTextField();
+        jButtonDodajDane = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+
+        jLabelImie.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelImie.setText("Imię: ");
+
+        jTextFieldImie.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Nazwisko:");
+
+        jTextFieldNazwisko.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Klasa: ");
+
+        jTextFieldKlasa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Rok rozpozęcia nauki: ");
+
+        jTextFieldRokRozpoczeciaNauki.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jButtonDodajDane.setText("Dodaj dane");
+        jButtonDodajDane.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDodajDaneActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabelImie)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldImie)
+                            .addComponent(jTextFieldNazwisko)
+                            .addComponent(jTextFieldKlasa)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 243, Short.MAX_VALUE))
+                    .addComponent(jTextFieldRokRozpoczeciaNauki)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonDodajDane)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelImie)
+                    .addComponent(jTextFieldImie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldNazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldRokRozpoczeciaNauki, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDodajDane)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonDodajDaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDodajDaneActionPerformed
+        imie = jTextFieldImie.getText();
+        nazwisko = jTextFieldNazwisko.getText();
+        klasa = jTextFieldKlasa.getText();
+        rokRozpoczeciaNauki = jTextFieldRokRozpoczeciaNauki.getText();
+        
+        setVisible(false);
+    }//GEN-LAST:event_jButtonDodajDaneActionPerformed
+    
+    public Dane getDane(){
+        return new Dane(imie, nazwisko, klasa, rokRozpoczeciaNauki);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -87,5 +191,15 @@ public class DodawanieDanych extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonDodajDane;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelImie;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextFieldImie;
+    private javax.swing.JTextField jTextFieldKlasa;
+    private javax.swing.JTextField jTextFieldNazwisko;
+    private javax.swing.JTextField jTextFieldRokRozpoczeciaNauki;
     // End of variables declaration//GEN-END:variables
 }
