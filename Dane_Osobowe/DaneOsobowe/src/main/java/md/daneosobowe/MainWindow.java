@@ -5,6 +5,7 @@
  */
 package md.daneosobowe;
 
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,15 +23,24 @@ public class MainWindow extends javax.swing.JFrame {
     DefaultListModel dlm = new DefaultListModel();
     ZapisDoPliku zdp = new ZapisDoPliku();
     OdczytZPliku ozp = new OdczytZPliku();
-    
+
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
-        initPopUpMenu();
         ozp.odczyt();
-        ozp.toString();
+        jList1.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e) {check(e);}
+            public void mouseReleased(MouseEvent e) {check(e);}
+            
+            public void check(MouseEvent e){
+                if (e.isPopupTrigger()){
+                    jList1.setSelectedIndex(jList1.locationToIndex(e.getPoint()));
+                    jPopupMenu1.show(jList1, e.getX(), e.getY());
+                }
+            }
+        });
     }
 
     /**
@@ -99,7 +109,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jButtonDodajDaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDodajDaneActionPerformed
        DodawanieDanych dodawanieDanych = new DodawanieDanych(this, rootPaneCheckingEnabled);
        dodawanieDanych.setVisible(true);
@@ -115,20 +125,6 @@ public class MainWindow extends javax.swing.JFrame {
        dodawanieDanych = null;
     }//GEN-LAST:event_jButtonDodajDaneActionPerformed
 
-    private void showPopupMenu(MouseEvent e){
-        jPopupMenu1.show(this, e.getX(), e.getY());
-    }
-    
-    private void formMousePressed(MouseEvent evt){
-        if (evt.isPopupTrigger()){
-            showPopupMenu(evt);
-        }
-    }
-    
-    private void initPopUpMenu(){
-        jMenuItemDelete.setText("Delete");
-    }
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
