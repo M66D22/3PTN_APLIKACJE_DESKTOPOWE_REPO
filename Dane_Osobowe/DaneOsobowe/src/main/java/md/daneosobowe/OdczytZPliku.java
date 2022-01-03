@@ -8,9 +8,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OdczytZPliku {
-    ArrayList<String> listOdczyt;
+    ArrayList<Dane> listOdczyt;
+    private String dane,name, surname, classOfSchool, yearOfStartEducation;
     
-    public void odczyt(){
+    public ArrayList<Dane> odczyt() throws FileNotFoundException{
         System.out.println("Działa");
         File f = new File("Dane.csv");
         Scanner sc;
@@ -18,14 +19,21 @@ public class OdczytZPliku {
         try {
             sc = new Scanner(f);
             while (sc.hasNext()){
-                listOdczyt.add(sc.nextLine());
-                System.out.println(""+listOdczyt);
+                dane = sc.nextLine();
                 //listOdczyt.toString().split(",");
                 String[] splitedData = listOdczyt.toString().split(",");
-                System.out.println("Splited data: "+splitedData[0]+splitedData[1]+splitedData[2]+splitedData[3]);
+                name = splitedData[0];
+                surname = splitedData[1];
+                classOfSchool = splitedData[2];
+                yearOfStartEducation = splitedData[3];
+                
+                Dane dane = new Dane(name, surname, classOfSchool, yearOfStartEducation);
+                
+                listOdczyt.add(dane);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(OdczytZPliku.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return listOdczyt;
     }
 }

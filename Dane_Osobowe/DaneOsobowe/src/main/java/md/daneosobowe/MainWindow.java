@@ -29,7 +29,8 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        ozp.odczyt();
+        DownloadFromFile();
+        jMenuItemDelete.setText("Delete");
         jList1.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent e) {check(e);}
             public void mouseReleased(MouseEvent e) {check(e);}
@@ -110,6 +111,18 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void DownloadFromFile(){
+        try {
+            list = ozp.odczyt();
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            for(int i =0;i<list.size();i++){
+                dlm.addElement(list.get(i));
+            }
+        jList1.setModel(dlm);
+    }
+    
     private void jButtonDodajDaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDodajDaneActionPerformed
        DodawanieDanych dodawanieDanych = new DodawanieDanych(this, rootPaneCheckingEnabled);
        dodawanieDanych.setVisible(true);
