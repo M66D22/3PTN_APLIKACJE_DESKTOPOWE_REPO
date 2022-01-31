@@ -5,7 +5,6 @@ public class Dzialania {
 
     public void setNum1(float num1) {
         this.num1 = num1;
-        System.err.println(""+num1);
     }
 
     public void setNum2(float num2) {
